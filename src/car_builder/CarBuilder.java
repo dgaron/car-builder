@@ -22,8 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
-public class CarBuilder extends Application
-{
+public class CarBuilder extends Application {
     private Scene scene1,
         scene2,
         scene3,
@@ -43,16 +42,14 @@ public class CarBuilder extends Application
         launch(args);
     }
     @Override
-    public void start(Stage primaryStage)
-    {
+    public void start(Stage primaryStage) {
         scene1 = getScene1(car, primaryStage);
 
         primaryStage.setTitle("Car Builder");
         primaryStage.setScene(scene1);
         primaryStage.show();
     }
-    private Scene getScene1(MyBuild car, Stage window)
-    {
+    private Scene getScene1(MyBuild car, Stage window) {
         //BorderPane top section
         Label sceneHeading = new Label("SELECT A MODEL");
         sceneHeading.setStyle("-fx-font-size: 36");
@@ -100,38 +97,27 @@ public class CarBuilder extends Application
         s70Button.setToggleGroup(modelGroup);
         s80Button.setToggleGroup(modelGroup);
         //Populate selected model
-        if (car.getModel().equals("Unknown") || car.getModel().equals("S40"))
-        {
+        if (car.getModel().equals("Unknown") || car.getModel().equals("S40")) {
             s40Button.setSelected(true);
             car.setModel("S40");
-        }
-        else if (car.getModel().equals("S60"))
-        {
+        } else if (car.getModel().equals("S60")) {
             s60Button.setSelected(true);
-        }
-        else if (car.getModel().equals("S70"))
-        {
+        } else if (car.getModel().equals("S70")) {
             s70Button.setSelected(true);
-        }
-        else
-        {
+        } else {
             s80Button.setSelected(true);
         }
         //Event Handler
-        s40Button.setOnAction(event ->
-        {
+        s40Button.setOnAction(event -> {
             car.setModel("S40");
         });
-        s60Button.setOnAction(event ->
-        {
+        s60Button.setOnAction(event -> {
             car.setModel("S60");
         });
-        s70Button.setOnAction(event ->
-        {
+        s70Button.setOnAction(event -> {
             car.setModel("S70");
         });
-        s80Button.setOnAction(event ->
-        {
+        s80Button.setOnAction(event -> {
             car.setModel("S80");
         });
         //Assemble GridPane
@@ -162,12 +148,10 @@ public class CarBuilder extends Application
         bottomBox.setPadding(new Insets(40,0,0,0));
         bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
         //Event handlers
-        eButton.setOnAction(event ->
-        {
+        eButton.setOnAction(event -> {
             window.close();
         });
-        cButton.setOnAction(event ->
-        {
+        cButton.setOnAction(event -> {
             window.setScene(getScene2(car,window));
         });
 
@@ -180,8 +164,7 @@ public class CarBuilder extends Application
 
         return new Scene(bp1);
     }
-    private Scene getScene2(MyBuild car, Stage window)
-    {
+    private Scene getScene2(MyBuild car, Stage window) {
         //BorderPane top section
         Label sceneHeading = new Label("CONFIGURATION");
         sceneHeading.setStyle("-fx-font-size: 36");
@@ -208,59 +191,41 @@ public class CarBuilder extends Application
         CheckBox bCheck = new CheckBox("$3,250");
         CheckBox mCheck = new CheckBox("$650");
         //Disable package B for S40 & S60
-        if (car.getModel().equals("S70") || car.getModel().equals("S80"))
-        {
+        if (car.getModel().equals("S70") || car.getModel().equals("S80")) {
             bCheck.setDisable(false);
-        }
-        else
-        {
+        } else {
             bCheck.setDisable(true);
             car.setPkgB(false);
         }
         //Populate currently selected options
-        if (car.getPkgA())
-        {
+        if (car.getPkgA()) {
             aCheck.setSelected(true);
         }
-        if (car.getPkgB())
-        {
+        if (car.getPkgB()) {
             bCheck.setSelected(true);
         }
-        if (car.getMetallic())
-        {
+        if (car.getMetallic()) {
             mCheck.setSelected(true);
         }
         //CheckBox event handlers
-        aCheck.setOnAction(event ->
-        {
-            if (aCheck.isSelected())
-            {
+        aCheck.setOnAction(event -> {
+            if (aCheck.isSelected()) {
                 car.setPkgA(true);
-            }
-            else
-            {
+            } else {
                 car.setPkgA(false);
             }
         });
-        bCheck.setOnAction(event ->
-        {
-            if (bCheck.isSelected())
-            {
+        bCheck.setOnAction(event -> {
+            if (bCheck.isSelected()) {
                 car.setPkgB(true);
-            }
-            else
-            {
+            } else {
                 car.setPkgB(false);
             }
         });
-        mCheck.setOnAction(event ->
-        {
-            if (mCheck.isSelected())
-            {
+        mCheck.setOnAction(event -> {
+            if (mCheck.isSelected()) {
                 car.setMetallic(true);
-            }
-            else
-            {
+            } else {
                 car.setMetallic(false);
             }
         });
@@ -309,48 +274,38 @@ public class CarBuilder extends Application
         colorList.getSelectionModel().selectIndices(0);
         car.setColor("White");
         //Populate currently selected color
-        if (car.getColor().equals("White"))
-        {
+
+        //REPLACE WITH SWITCH STATEMENT
+        if (car.getColor().equals("White")) {
             colorList.getSelectionModel().selectIndices(0);
         }
-        if (car.getColor().equals("Black"))
-        {
+        if (car.getColor().equals("Black")) {
             colorList.getSelectionModel().selectIndices(1);
         }
-        if (car.getColor().equals("Grey"))
-        {
+        if (car.getColor().equals("Grey")) {
             colorList.getSelectionModel().selectIndices(2);
         }
-        if (car.getColor().equals("Blue"))
-        {
+        if (car.getColor().equals("Blue")) {
             colorList.getSelectionModel().selectIndices(3);
         }
-        if (car.getColor().equals("Red"))
-        {
+        if (car.getColor().equals("Red")) {
             colorList.getSelectionModel().selectIndices(4);
         }
         //Event handler
-        colorList.getSelectionModel().selectedItemProperty().addListener(event ->
-        {
+        colorList.getSelectionModel().selectedItemProperty().addListener(event -> {
             int i = colorList.getSelectionModel().getSelectedIndex();
-            if (i==0)
-            {
+
+            //REPLACE WITH SWITCH STATEMENT
+
+            if (i==0) {
                 car.setColor("White");
-            }
-            else if (i==1)
-            {
+            } else if (i==1) {
                 car.setColor("Black");
-            }
-            else if (i==2)
-            {
+            } else if (i==2) {
                 car.setColor("Grey");
-            }
-            else if (i==3)
-            {
+            } else if (i==3) {
                 car.setColor("Blue");
-            }
-            else
-            {
+            } else {
                 car.setColor("Red");
             }
         });
@@ -365,16 +320,13 @@ public class CarBuilder extends Application
         bottomBox.setPadding(new Insets(40,0,0,0));
         bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
         //Event handlers
-        pButton.setOnAction(event ->
-        {
+        pButton.setOnAction(event -> {
             window.setScene(getScene1(car,window));
         });
-        cButton.setOnAction(event ->
-        {
+        cButton.setOnAction(event -> {
             window.setScene(getScene3(customer,window));
         });
-        eButton.setOnAction(event ->
-        {
+        eButton.setOnAction(event -> {
             window.close();
         });
 
@@ -387,8 +339,7 @@ public class CarBuilder extends Application
 
         return new Scene(bp2);
     }
-    private Scene getScene3(Customer customer, Stage window)
-    {
+    private Scene getScene3(Customer customer, Stage window) {
         //Alerts
         Alert missingInfo = new Alert(Alert.AlertType.WARNING,
                 "ERROR: Please fill in missing fields");
@@ -426,32 +377,25 @@ public class CarBuilder extends Application
         zipField.setMaxWidth(100);
 
         //Populate stored data
-        if (!customer.getFirstName().equals("Unknown"))
-        {
+        if (!customer.getFirstName().equals("Unknown")) {
             fNameField.setText(customer.getFirstName());
         }
-        if (!customer.getLastName().equals("Unknown"))
-        {
+        if (!customer.getLastName().equals("Unknown")) {
             lNameField.setText(customer.getLastName());
         }
-        if (!customer.getPhone().equals("Unknown"))
-        {
+        if (!customer.getPhone().equals("Unknown")) {
             phoneField.setText(customer.getPhone());
         }
-        if (!customer.getAddress1().equals("Unknown"))
-        {
+        if (!customer.getAddress1().equals("Unknown")) {
             address1Field.setText(customer.getAddress1());
         }
-        if (!customer.getAddress2().equals("Unknown"))
-        {
+        if (!customer.getAddress2().equals("Unknown")) {
             address2Field.setText(customer.getAddress2());
         }
-        if (!customer.getCity().equals("Unknown"))
-        {
+        if (!customer.getCity().equals("Unknown")) {
             cityField.setText(customer.getCity());
         }
-        if (!customer.getZip().equals("Unknown"))
-        {
+        if (!customer.getZip().equals("Unknown")) {
             zipField.setText(customer.getZip());
         }
 
@@ -468,8 +412,7 @@ public class CarBuilder extends Application
         states.setVisibleRowCount(10);
         states.setValue("Alabama");
         //Populate stored data
-        if (!customer.getState().equals("Unknown"))
-        {
+        if (!customer.getState().equals("Unknown")) {
             states.setValue(customer.getState());
         }
 
@@ -509,118 +452,87 @@ public class CarBuilder extends Application
         bottomBox.setPadding(new Insets(40,0,0,0));
         bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
         //Event handlers
-        pButton.setOnAction(event ->
-        {
-            if (!(fNameField.getText().isEmpty()))
-            {
+        pButton.setOnAction(event -> {
+            if (!(fNameField.getText().isEmpty())) {
                 customer.setFirstName(fNameField.getText());
             }
-            if (!(lNameField.getText().isEmpty()))
-            {
+            if (!(lNameField.getText().isEmpty())) {
                 customer.setLastName(lNameField.getText());
             }
-            if (!(phoneField.getText().isEmpty()))
-            {
+            if (!(phoneField.getText().isEmpty())) {
                 customer.setPhone(phoneField.getText());
             }
-            if (!(address1Field.getText().isEmpty()))
-            {
+            if (!(address1Field.getText().isEmpty())) {
                 customer.setAddress1(address1Field.getText());
             }
-            if (!(address2Field.getText().isEmpty()))
-            {
+            if (!(address2Field.getText().isEmpty())) {
                 customer.setAddress2(address2Field.getText());
             }
-            if (!(cityField.getText().isEmpty()))
-            {
+            if (!(cityField.getText().isEmpty())) {
                 customer.setCity(cityField.getText());
             }
-            if (!(zipField.getText().isEmpty()))
-            {
+            if (!(zipField.getText().isEmpty())) {
                 customer.setZip(zipField.getText());
             }
             customer.setState(states.getValue());
             window.setScene(getScene2(car,window));
         });
-        cButton.setOnAction(event ->
-        {
+        cButton.setOnAction(event -> {
+            //Explain formFilled
             boolean formFilled = true;
-            if (!(fNameField.getText().isEmpty()))
-            {
+            if (!(fNameField.getText().isEmpty())) {
                 customer.setFirstName(fNameField.getText());
                 fName.setTextFill(Color.BLACK);
-            }
-            else
-            {
+            } else {
                 formFilled = false;
                 fName.setTextFill(Color.RED);
             }
-            if (!(lNameField.getText().isEmpty()))
-            {
+            if (!(lNameField.getText().isEmpty())) {
                 customer.setLastName(lNameField.getText());
                 lName.setTextFill(Color.BLACK);
-            }
-            else
-            {
+            } else {
                 formFilled = false;
                 lName.setTextFill(Color.RED);
             }
-            if (!(phoneField.getText().isEmpty()))
-            {
+            if (!(phoneField.getText().isEmpty())) {
                 customer.setPhone(phoneField.getText());
                 phone.setTextFill(Color.BLACK);
-            }
-            else
-            {
+            } else {
                 formFilled = false;
                 phone.setTextFill(Color.RED);
             }
-            if (!(address1Field.getText().isEmpty()))
-            {
+            if (!(address1Field.getText().isEmpty())) {
                 customer.setAddress1(address1Field.getText());
                 address1.setTextFill(Color.BLACK);
-            }
-            else
-            {
+            } else {
                 formFilled = false;
                 address1.setTextFill(Color.RED);
             }
-            if (!(address2Field.getText().isEmpty()))
-            {
+            if (!(address2Field.getText().isEmpty())) {
                 customer.setAddress2(address2Field.getText());
             }
-            if (!(cityField.getText().isEmpty()))
-            {
+            if (!(cityField.getText().isEmpty())) {
                 customer.setCity(cityField.getText());
                 city.setTextFill(Color.BLACK);
-            }
-            else
-            {
+            } else {
                 formFilled = false;
                 city.setTextFill(Color.RED);
             }
-            if (!(zipField.getText().isEmpty()))
-            {
+            if (!(zipField.getText().isEmpty())) {
                 customer.setZip(zipField.getText());
                 zip.setTextFill(Color.BLACK);
-            }
-            else
-            {
+            } else {
                 formFilled = false;
                 zip.setTextFill(Color.RED);
             }
             customer.setState(states.getValue());
-            if (formFilled)
-            {
+            if (formFilled) {
                 window.setScene(getScene4(car, customer, window));
-            }
-            else
-            {
+            } else {
                 missingInfo.show();
             }
         });
-        eButton.setOnAction(event ->
-        {
+        eButton.setOnAction(event -> {
             window.close();
         });
 
@@ -633,8 +545,7 @@ public class CarBuilder extends Application
 
         return new Scene(bp3);
     }
-    private Scene getScene4(MyBuild car, Customer customer, Stage window)
-    {
+    private Scene getScene4(MyBuild car, Customer customer, Stage window) {
         //Alerts
         Alert tradeFieldAlert = new Alert(Alert.AlertType.WARNING);
 
@@ -689,31 +600,22 @@ public class CarBuilder extends Application
         Label packageAChosen = new Label();
         Label packageBChosen = new Label();
         Label metallicChosen = new Label();
-        if (car.getPkgA())
-        {
+        if (car.getPkgA()) {
             packageAChosen.setText(String.format("$%,.2f",
                     car.getPkgAPrice()));
-        }
-        else
-        {
+        } else {
             pkgALabel.setVisible(false);
         }
-        if (car.getPkgB())
-        {
+        if (car.getPkgB()) {
             packageBChosen.setText(String.format("$%,.2f",
                     car.getPkgBPrice()));
-        }
-        else
-        {
+        } else {
             pkgBLabel.setVisible(false);
         }
-        if (car.getMetallic())
-        {
+        if (car.getMetallic()) {
             metallicChosen.setText(String.format("$%,.2f",
                     car.getMetallicPaintPrice()));
-        }
-        else
-        {
+        } else {
             metallicLabel.setVisible(false);
         }
         Label priceAsBuiltResult = new Label(String.format("$%,.2f",car.getTotalPrice()));
@@ -735,26 +637,18 @@ public class CarBuilder extends Application
         term.setValue("36 months");
         term.setDisable(true);
         //Event handlers
-        term.setOnAction(event ->
-        {
+        term.setOnAction(event -> {
             int numPayments;
-            if (term.getValue().equals("24 months"))
-            {
+            if (term.getValue().equals("24 months")) {
                 numPaymentResult.setText("24");
                 numPayments = 24;
-            }
-            else if (term.getValue().equals("36 months"))
-            {
+            } else if (term.getValue().equals("36 months")) {
                 numPaymentResult.setText("36");
                 numPayments = 36;
-            }
-            else if (term.getValue().equals("48 months"))
-            {
+            } else if (term.getValue().equals("48 months")) {
                 numPaymentResult.setText("48");
                 numPayments = 48;
-            }
-            else
-            {
+            } else {
                 numPaymentResult.setText("60");
                 numPayments = 60;
             }
@@ -762,29 +656,22 @@ public class CarBuilder extends Application
             monthlyPaymentResult.setText(String.format("$%,.2f", payment));
             totalPaymentsResult.setText(String.format("$%,.2f", (payment * numPayments)));
         });
-        financing.setOnAction(event ->
-        {
-            if (financing.isSelected())
-            {
+        financing.setOnAction(event -> {
+            if (financing.isSelected()) {
                 //Update financing boolean
                 payingCash = false;
                 //Enable term ComboBox
                 term.setDisable(false);
                 //Update total price
-                if (!(tradeField.getText().isEmpty()))
-                {
-                    try
-                    {
+                if (!(tradeField.getText().isEmpty())) {
+                    try {
                         //Update total price
                         totalPrice = calculateTotalPrice(car, Double.parseDouble(tradeField.getText()));
-                        if (Double.parseDouble(tradeField.getText())<0)
-                        {
+                        if (Double.parseDouble(tradeField.getText())<0) {
                             throw new NegativeTradeException();
                         }
                         totalCostResult.setText(String.format("$%,.2f", totalPrice));
-                    }
-                    catch (NumberFormatException ex)
-                    {
+                    } catch (NumberFormatException ex) {
                         //Reset trade-in Label and TextField to 0.0
                         tradeField.setText("0.00");
                         tradeInValue.setText("($0.00)");
@@ -795,9 +682,7 @@ public class CarBuilder extends Application
                         //Update price for 0.0 trade-in value
                         totalPrice = calculateTotalPrice(car, 0.0);
                         totalCostResult.setText(String.format("$%,.2f", totalPrice));
-                    }
-                    catch (NegativeTradeException ex)
-                    {
+                    } catch (NegativeTradeException ex) {
                         //Reset trade-in Label and TextField to 0.0
                         tradeField.setText("0.00");
                         tradeInValue.setText("($0.00)");
@@ -812,23 +697,16 @@ public class CarBuilder extends Application
                 }
                 //Determine number of payments
                 int numPayments;
-                if (term.getValue().equals("24 months"))
-                {
+                if (term.getValue().equals("24 months")) {
                     numPaymentResult.setText("24");
                     numPayments = 24;
-                }
-                else if (term.getValue().equals("36 months"))
-                {
+                } else if (term.getValue().equals("36 months")) {
                     numPaymentResult.setText("36");
                     numPayments = 36;
-                }
-                else if (term.getValue().equals("48 months"))
-                {
+                } else if (term.getValue().equals("48 months")) {
                     numPaymentResult.setText("48");
                     numPayments = 48;
-                }
-                else
-                {
+                } else {
                     numPaymentResult.setText("60");
                     numPayments = 60;
                 }
@@ -846,18 +724,14 @@ public class CarBuilder extends Application
                 //Set discounts Labels invisible
                 discountsApplied.setVisible(false);
                 discounts.setVisible(false);
-            }
-            else
-            {
+            } else {
                 //Update financing boolean
                 payingCash = true;
                 //Disable term ComboBox
                 term.setDisable(true);
                 //Update total price
-                if (!(tradeField.getText().isEmpty()))
-                {
-                    try
-                    {
+                if (!(tradeField.getText().isEmpty())) {
+                    try {
                         //Update total price
                         totalPrice = calculateTotalPrice(car, Double.parseDouble(tradeField.getText()));
                         if (Double.parseDouble(tradeField.getText())<0)
@@ -865,9 +739,7 @@ public class CarBuilder extends Application
                             throw new NegativeTradeException();
                         }
                         totalCostResult.setText(String.format("$%,.2f", totalPrice));
-                    }
-                    catch (NumberFormatException ex)
-                    {
+                    } catch (NumberFormatException ex) {
                         //Reset trade-in Label and TextField to 0.0
                         tradeField.setText("0.00");
                         tradeInValue.setText("($0.00)");
@@ -878,9 +750,7 @@ public class CarBuilder extends Application
                         //Update price for 0.0 trade-in value
                         totalPrice = calculateTotalPrice(car, 0.0);
                         totalCostResult.setText(String.format("$%,.2f", totalPrice));
-                    }
-                    catch (NegativeTradeException ex)
-                    {
+                    } catch (NegativeTradeException ex) {
                         //Reset trade-in Label and TextField to 0.0
                         tradeField.setText("0.00");
                         tradeInValue.setText("($0.00)");
@@ -905,16 +775,12 @@ public class CarBuilder extends Application
                 discounts.setVisible(true);
             }
         });
-        tradeField.setOnAction(event ->
-        {
-            if (!(tradeField.getText().isEmpty()))
-            {
-                try
-                {
+        tradeField.setOnAction(event -> {
+            if (!(tradeField.getText().isEmpty())) {
+                try {
                     tradeInValue.setText(String.format("($%,.2f)",
                             Double.parseDouble(tradeField.getText())));
-                    if (Double.parseDouble(tradeField.getText())<0)
-                    {
+                    if (Double.parseDouble(tradeField.getText())<0) {
                         throw new NegativeTradeException();
                     }
                     //Update total price
@@ -922,24 +788,16 @@ public class CarBuilder extends Application
                     totalCostResult.setText(String.format("$%,.2f", totalPrice));
                     taxOwedLabel.setText(String.format("$%,.2f",taxOwed));
                     //Update payments info
-                    if (financing.isSelected())
-                    {
+                    if (financing.isSelected()) {
                         //Determine number of payments
                         int numPayments;
-                        if (term.getValue().equals("24 months"))
-                        {
+                        if (term.getValue().equals("24 months")) {
                             numPayments = 24;
-                        }
-                        else if (term.getValue().equals("36 months"))
-                        {
+                        } else if (term.getValue().equals("36 months")) {
                             numPayments = 36;
-                        }
-                        else if (term.getValue().equals("48 months"))
-                        {
+                        } else if (term.getValue().equals("48 months")) {
                             numPayments = 48;
-                        }
-                        else
-                        {
+                        } else {
                             numPayments = 60;
                         }
                         //Update payments info
@@ -949,9 +807,7 @@ public class CarBuilder extends Application
 
                     }
                     tradeInR.setTextFill(Color.BLACK);
-                }
-                catch (NumberFormatException ex)
-                {
+                } catch (NumberFormatException ex) {
                     //Reset trade-in Label and TextField to 0.0
                     tradeField.setText("0.00");
                     tradeInValue.setText("($0.00)");
@@ -964,24 +820,16 @@ public class CarBuilder extends Application
                     totalCostResult.setText(String.format("$%,.2f", totalPrice));
                     taxOwedLabel.setText(String.format("$%,.2f",taxOwed));
                     //Update payments info based on new total if financing is selected
-                    if (financing.isSelected())
-                    {
+                    if (financing.isSelected()) {
                         //Determine number of payments
                         int numPayments;
-                        if (term.getValue().equals("24 months"))
-                        {
+                        if (term.getValue().equals("24 months")) {
                             numPayments = 24;
-                        }
-                        else if (term.getValue().equals("36 months"))
-                        {
+                        } else if (term.getValue().equals("36 months")) {
                             numPayments = 36;
-                        }
-                        else if (term.getValue().equals("48 months"))
-                        {
+                        } else if (term.getValue().equals("48 months")) {
                             numPayments = 48;
-                        }
-                        else
-                        {
+                        } else {
                             numPayments = 60;
                         }
                         //Update payments info
@@ -989,9 +837,7 @@ public class CarBuilder extends Application
                         monthlyPaymentResult.setText(String.format("$%,.2f", payment));
                         totalPaymentsResult.setText(String.format("$%,.2f", (payment * numPayments)));
                     }
-                }
-                catch (NegativeTradeException ex)
-                {
+                } catch (NegativeTradeException ex) {
                     //Reset trade-in Label and TextField to 0.0
                     tradeField.setText("0.00");
                     tradeInValue.setText("($0.00)");
@@ -1004,24 +850,16 @@ public class CarBuilder extends Application
                     totalCostResult.setText(String.format("$%,.2f", totalPrice));
                     taxOwedLabel.setText(String.format("$%,.2f",taxOwed));
                     //Update payments info based on new total if financing is selected
-                    if (financing.isSelected())
-                    {
+                    if (financing.isSelected()) {
                         //Determine number of payments
                         int numPayments;
-                        if (term.getValue().equals("24 months"))
-                        {
+                        if (term.getValue().equals("24 months")) {
                             numPayments = 24;
-                        }
-                        else if (term.getValue().equals("36 months"))
-                        {
+                        } else if (term.getValue().equals("36 months")) {
                             numPayments = 36;
-                        }
-                        else if (term.getValue().equals("48 months"))
-                        {
+                        } else if (term.getValue().equals("48 months")) {
                             numPayments = 48;
-                        }
-                        else
-                        {
+                        } else {
                             numPayments = 60;
                         }
                         //Update payments info
@@ -1092,12 +930,10 @@ public class CarBuilder extends Application
         bottomBox.setPadding(new Insets(40,0,0,0));
         bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
         //Event handlers
-        pButton.setOnAction(event ->
-        {
+        pButton.setOnAction(event -> {
             window.setScene(getScene3(customer,window));
         });
-        eButton.setOnAction(event ->
-        {
+        eButton.setOnAction(event -> {
             window.close();
         });
         //Assemble BorderPane
@@ -1109,21 +945,16 @@ public class CarBuilder extends Application
 
         return new Scene(bp4);
     }
-    private double calculateTotalPrice(MyBuild car, double tradeValue)
-    {
-        if (payingCash)
-        {
+    private double calculateTotalPrice(MyBuild car, double tradeValue) {
+        if (payingCash) {
             taxOwed = (car.getTotalPrice() - tradeValue - CASH_DISCOUNT) * SALES_TAX_RATE;
             return car.getTotalPrice() - tradeValue - CASH_DISCOUNT + taxOwed + DOC_FEES;
-        }
-        else
-        {
+        } else {
             taxOwed = (car.getTotalPrice() - tradeValue) * SALES_TAX_RATE;
             return car.getTotalPrice() - tradeValue + taxOwed + DOC_FEES;
         }
     }
-    private double finance(int term)
-    {
+    private double finance(int term) {
         double r = FINANCE_RATE / 12;	//Interest per period
         int n = term;
         return (r*totalPrice) / (1-Math.pow(1+r,-n));

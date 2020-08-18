@@ -18,8 +18,7 @@ public class Customer
      * No-arg constructor
      * This constructor initializes all fields with the value "Unknown".
      */
-    public Customer()
-    {
+    public Customer() {
         accountNumber = (int)(Math.random()*1e10);
         firstName = "Unknown";
         lastName = "Unknown";
@@ -45,8 +44,7 @@ public class Customer
     public Customer(String firstName, String lastName,
                     String phone, String address1,
                     String address2, String city,
-                    String state, String zip)
-    {
+                    String state, String zip) {
         accountNumber = (int)(Math.random()*1e10);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -70,8 +68,7 @@ public class Customer
      */
     public Customer(String firstName, String lastName,
                     String phone, String address1,
-                    String city, String state, String zip)
-    {
+                    String city, String state, String zip) {
         accountNumber = (int)(Math.random()*1e10);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -86,8 +83,7 @@ public class Customer
      * This method returns the account number.
      * @return int account number
      */
-    public int getAccountNumber()
-    {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
@@ -95,8 +91,7 @@ public class Customer
      * This method returns the first name.
      * @return String containing the first name
      */
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -104,8 +99,7 @@ public class Customer
      * This method returns the last name.
      * @return String containing the last name
      */
-    public String getLastName()
-    {
+    public String getLastName() {
         return lastName;
     }
 
@@ -113,8 +107,7 @@ public class Customer
      * This method returns the phone number.
      * @return String containing the phone number
      */
-    public String getPhone()
-    {
+    public String getPhone() {
         return phone;
     }
 
@@ -122,8 +115,7 @@ public class Customer
      * This method returns the first address line.
      * @return String containing the first address line.
      */
-    public String getAddress1()
-    {
+    public String getAddress1() {
         return address1;
     }
 
@@ -131,8 +123,7 @@ public class Customer
      * This method returns the second address line.
      * @return String containing the second address line
      */
-    public String getAddress2()
-    {
+    public String getAddress2() {
         return address2;
     }
 
@@ -140,8 +131,7 @@ public class Customer
      * This method returns the city.
      * @return String containing the city
      */
-    public String getCity()
-    {
+    public String getCity() {
         return city;
     }
 
@@ -149,8 +139,7 @@ public class Customer
      * This method returns the state.
      * @return String containing the state
      */
-    public String getState()
-    {
+    public String getState() {
         return state;
     }
 
@@ -158,8 +147,7 @@ public class Customer
      * This method returns the zip code.
      * @return String containing the zip code
      */
-    public String getZip()
-    {
+    public String getZip() {
         return zip;
     }
 
@@ -167,8 +155,7 @@ public class Customer
      * This method sets the first name field.
      * @param firstName String containing the first name
      */
-    protected void setFirstName(String firstName)
-    {
+    protected void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -176,8 +163,7 @@ public class Customer
      * This method sets the last name field.
      * @param lastName String containing the last name
      */
-    protected void setLastName(String lastName)
-    {
+    protected void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -185,8 +171,7 @@ public class Customer
      * This method sets the phone field.
      * @param phone String containing the phone number
      */
-    protected void setPhone(String phone)
-    {
+    protected void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -194,8 +179,7 @@ public class Customer
      * This method sets the first address line field.
      * @param address1 String containing the first address line
      */
-    protected void setAddress1(String address1)
-    {
+    protected void setAddress1(String address1) {
         this.address1 = address1;
     }
 
@@ -203,8 +187,7 @@ public class Customer
      * This method sets the second address line field.
      * @param address2 String containing the second address line
      */
-    protected void setAddress2(String address2)
-    {
+    protected void setAddress2(String address2) {
         this.address2 = address2;
     }
 
@@ -212,8 +195,7 @@ public class Customer
      * This method sets the city field.
      * @param city String containing the city
      */
-    protected void setCity(String city)
-    {
+    protected void setCity(String city) {
         this.city = city;
     }
 
@@ -221,8 +203,7 @@ public class Customer
      * This method sets the state field.
      * @param state String containing the state
      */
-    protected void setState(String state)
-    {
+    protected void setState(String state) {
         this.state = state;
     }
 
@@ -230,8 +211,7 @@ public class Customer
      * This method sets the zip field.
      * @param zip String containing zip code
      */
-    protected void setZip(String zip)
-    {
+    protected void setZip(String zip) {
         this.zip = zip;
     }
 
@@ -240,8 +220,7 @@ public class Customer
      * @return String containing information about the object
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         String str;
         if (address2 == null) {
             str = String.format("Customer #:\t%d" +
@@ -253,9 +232,7 @@ public class Customer
                             "%nState:\t\t%s" +
                             "%nZip:\t\t%s", accountNumber, firstName, lastName, phone,
                             address1, city, state, zip);
-        }
-        else
-        {
+        } else {
             str = String.format("Customer #:\t%d" +
                             "%nName:\t\t%s %s"+
                             "%nPhone:\t\t%s" +
