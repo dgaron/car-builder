@@ -270,43 +270,51 @@ public class CarBuilder extends Application {
         ListView<ImageView> colorList = new ListView<>();
         colorList.setPrefSize(75,275);
         colorList.getItems().addAll(whiteView, blackView, greyView, blueView, redView);
-        //Set a selected value
-        colorList.getSelectionModel().selectIndices(0);
-        car.setColor("White");
-        //Populate currently selected color
 
-        //REPLACE WITH SWITCH STATEMENT
-        if (car.getColor().equals("White")) {
-            colorList.getSelectionModel().selectIndices(0);
+        //Set a color value in colorList
+        switch (car.getColor()) {
+            case "White":
+                colorList.getSelectionModel().selectIndices(0);
+                break;
+            case "Black":
+                colorList.getSelectionModel().selectIndices(1);
+                break;
+            case "Grey":
+                colorList.getSelectionModel().selectIndices(2);
+                break;
+            case "Blue":
+                colorList.getSelectionModel().selectIndices(3);
+                break;
+            case "Red":
+                colorList.getSelectionModel().selectIndices(4);
+                break;
+            default:
+                colorList.getSelectionModel().selectIndices(0);
+                break;
         }
-        if (car.getColor().equals("Black")) {
-            colorList.getSelectionModel().selectIndices(1);
-        }
-        if (car.getColor().equals("Grey")) {
-            colorList.getSelectionModel().selectIndices(2);
-        }
-        if (car.getColor().equals("Blue")) {
-            colorList.getSelectionModel().selectIndices(3);
-        }
-        if (car.getColor().equals("Red")) {
-            colorList.getSelectionModel().selectIndices(4);
-        }
+
         //Event handler
         colorList.getSelectionModel().selectedItemProperty().addListener(event -> {
             int i = colorList.getSelectionModel().getSelectedIndex();
-
-            //REPLACE WITH SWITCH STATEMENT
-
-            if (i==0) {
-                car.setColor("White");
-            } else if (i==1) {
-                car.setColor("Black");
-            } else if (i==2) {
-                car.setColor("Grey");
-            } else if (i==3) {
-                car.setColor("Blue");
-            } else {
-                car.setColor("Red");
+            switch (i) {
+                case 0:
+                    car.setColor("White");
+                    break;
+                case 1:
+                    car.setColor("Black");
+                    break;
+                case 2:
+                    car.setColor("Grey");
+                    break;
+                case 3:
+                    car.setColor("Blue");
+                    break;
+                case 4:
+                    car.setColor("Red");
+                    break;
+                default:
+                    car.setColor("White");
+                    break;
             }
         });
 
