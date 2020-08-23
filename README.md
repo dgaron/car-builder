@@ -8,7 +8,7 @@ breakdown of the cost to purchase the vehicle as built.
 
 CarBuilder was created for a programming assignment at Broward College. In addition
 to satisfying the requirements of the assignment, additional functionality was 
-added to handle errors and improve stability.
+added to validate input, handle errors, and improve stability.
 
 ### CarBuilder Class
 
