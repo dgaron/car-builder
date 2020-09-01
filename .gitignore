@@ -1,1 +1,6 @@
+#Ignore IDE files
 .idea/
+#Ignore compiled files
+out/
+#Ignore OS files
+**/.DS_store
