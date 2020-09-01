@@ -965,6 +965,6 @@ public class CarBuilder extends Application {
     private double finance(int term) {
         double r = FINANCE_RATE / 12;	//Interest per period
         int n = term;
-        return (r*totalPrice) / (1-Math.pow(1+r,-n));
+        return (r * totalPrice) / (1 - Math.pow(1 + r, -n));
     }
 }
